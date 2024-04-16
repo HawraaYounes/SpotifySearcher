@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Container, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 
 function ArtistSearch() {
+
   const [searchInput, setSearchInput] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [debouncedSearchInput, setDebouncedSearchInput] = useState('');
   const accessToken = localStorage.getItem('spotify_access_token'); // Retrieve access token from localStorage
+  const navigate = useNavigate();
 
   // Debounce function to delay search execution
   useEffect(() => {
@@ -64,6 +67,10 @@ function ArtistSearch() {
     return stars;
   };
 
+  const handleCardClick = (artistId) => {
+    navigate(`/albums/${artistId}`); // Navigate to artist albums route using navigate function
+  };
+
   return (
     <div className="App">
       <Container>
@@ -83,7 +90,7 @@ function ArtistSearch() {
           {searchResults.map((artist) => (
             <Col key={artist.id}>
               <div className="d-flex h-100">
-                <Card className="w-100">
+                <Card className="w-100" onClick={() => handleCardClick(artist.id)}>
                   <Card.Img src={artist.images[0]?.url || ''} className="card-img-top h-70" alt="Artist" />
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>
