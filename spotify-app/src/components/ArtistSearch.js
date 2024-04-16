@@ -73,15 +73,18 @@ function ArtistSearch() {
 
   return (
     <div className="App">
-      <Container>
-        <InputGroup className="mb-3">
+      <Container className="search-container">
+        <InputGroup className="mb-3" size="lg">
           <FormControl
+          aria-label="Large"
+
+           className="rounded h-auto"
             placeholder="Search for an artist..."
             type="input"
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
-          <Button onClick={() => setDebouncedSearchInput(searchInput)}>Search</Button>
+          <Button variant="success" onClick={() => setDebouncedSearchInput(searchInput)}>Search</Button>
         </InputGroup>
       </Container>
 

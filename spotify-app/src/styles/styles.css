@@ -26,3 +26,77 @@ li:not(:last-child)::after {
     color: green;
     font-weight: bold;
 }
+/* App.css */
+
+body {
+    background-color: black;
+    color: white ; /* Text color */
+  }
+  
+
+  
+  .card {
+    background-color: #343a40; /* Dark green background for cards */
+    color: white;
+  }
+  
+  .star.filled {
+    color: #28a745; /* Green color for filled stars */
+  }
+  
+  .form-control {
+    color: black;
+  }
+
+  .landing-page {
+    background-image: url('/public/1.jpg');
+    background-size: cover;
+    background-position: top center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #1db954;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #1ed760;
+  }
+  
+
+  .card:hover {
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.6); /* Green shadow on hover */
+    transform: scale(1.08); /* Increase scale on hover */
+    transition: box-shadow 0.5s, transform 0.5s; /* Longer transition duration */
+  }
+  .search-container {
+    padding: 20px; /* Add padding around the search input */
+  }
+  .search-container input {
+    background-color: #242424; /* Set the background color of the input to gray */
+    color: whitesmoke;
+  }
+  .search-container input::placeholder {
+    color: lightgray; /* Set the color of the placeholder text to light gray */
+  }
+
+  .form-control:focus{
+    box-shadow: none ;
+    outline: none;
+  }
