@@ -6,6 +6,7 @@ import ArtistSearch from './components/ArtistSearch';
 import ArtistAlbums from './components/ArtistAlbums';
 import CallbackPage from './components/CallbackPage';
 import "bootstrap/dist/css/bootstrap.min.css";
+import './styles/styles.css'; 
 
 function App() {
   return (

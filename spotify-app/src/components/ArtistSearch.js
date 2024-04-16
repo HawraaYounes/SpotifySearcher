@@ -48,6 +48,22 @@ function ArtistSearch() {
     }
   }, [debouncedSearchInput, accessToken]);
 
+  // Function to render star rating
+  const renderStarRating = (popularity) => {
+    const rating = Math.round(popularity / 20); // Convert popularity (0-100) to a 1-5 rating
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(<span key={i} className="star filled">&#9733;</span>); // Render a filled star with class "filled"
+      } else {
+        stars.push(<span key={i} className="star">&#9734;</span>); // Render an empty star
+      }
+    }
+
+    return stars;
+  };
+
   return (
     <div className="App">
       <Container>
@@ -68,9 +84,11 @@ function ArtistSearch() {
             <Col key={artist.id}>
               <div className="d-flex h-100">
                 <Card className="w-100">
-                  <Card.Img src={artist.images[0]?.url || ''} className="card-img-top h-100" alt="Artist" />
+                  <Card.Img src={artist.images[0]?.url || ''} className="card-img-top h-70" alt="Artist" />
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>
+                    <div className="follower-count">{artist.followers.total} followers</div> 
+                    <div className="star-rating">{renderStarRating(artist.popularity)}</div> 
                   </Card.Body>
                 </Card>
               </div>
