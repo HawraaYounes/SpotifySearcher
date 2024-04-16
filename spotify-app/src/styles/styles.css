@@ -5,3 +5,24 @@
   .star.filled {
     color: green; /* Filled star color */
   }
+  ul {
+  list-style: none; /* Remove bullets */
+  padding: 0; /* Remove default padding */
+  display: inline-block;
+}
+
+li {
+  display: inline; /* Display list items horizontally */
+}
+
+li:not(:last-child)::after {
+  content: ', '; /* Add comma after each list item except the last one */
+}
+.artists-label{
+    font-weight: bold;
+    display: inline-block;
+}
+.album-name{
+    color: green;
+    font-weight: bold;
+}
