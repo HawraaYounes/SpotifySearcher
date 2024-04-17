@@ -26,7 +26,7 @@ function ArtistAlbums() {
 
   return (
     <div className="App">
-      <Container>
+      <Container fluid>
         <Row className="m-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {albums.map((album) => (
             <Col key={album.id}>

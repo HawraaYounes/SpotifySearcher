@@ -82,7 +82,7 @@ function ArtistSearch() {
         </InputGroup>
       </Container>
 
-      <Container>
+      <Container fluid>
         <Row className="mx-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {searchResults.map((artist) => (
             <Col key={artist.id}>

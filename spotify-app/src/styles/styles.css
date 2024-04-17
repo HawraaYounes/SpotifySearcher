@@ -32,6 +32,8 @@ li:not(:last-child)::after {
 body {
   background-color: black;
   color: white; /* Text color */
+  font-family: 'Cutive Mono' !important;
+  font-weight: lighter;
 }
 
 .card {
