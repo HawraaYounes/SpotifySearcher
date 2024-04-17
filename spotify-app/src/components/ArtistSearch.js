@@ -25,13 +25,16 @@ function ArtistSearch() {
       try {
         const response = await fetch(`https://api.spotify.com/v1/search?q=${debouncedSearchInput}&type=artist`, {
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${accessToken}`, // Use access token in API request
           },
         });
         const data = await response.json();
+
+        // Filter the search results based on the artist's name
         const filteredResults = data.artists.items.filter((artist) =>
           artist.name.toLowerCase().includes(debouncedSearchInput.toLowerCase())
         );
+
         setSearchResults(filteredResults);
       } catch (error) {
         console.error('Error searching for artists:', error);
@@ -41,10 +44,11 @@ function ArtistSearch() {
     if (debouncedSearchInput) {
       search();
     } else {
-      setSearchResults([]);
+      setSearchResults([]); // Clear search results if input is empty
     }
   }, [debouncedSearchInput, accessToken]);
 
+  // Function to render star rating
   const renderStarRating = (popularity) => {
     const rating = Math.round(popularity / 20); // Convert popularity (0-100) to a 1-5 rating
     const stars = [];
@@ -61,7 +65,7 @@ function ArtistSearch() {
   };
 
   const handleCardClick = (artistId) => {
-    navigate(`/albums/${artistId}`);
+    navigate(`/albums/${artistId}`); // Navigate to artist albums route using navigate function
   };
 
   return (
@@ -76,7 +80,7 @@ function ArtistSearch() {
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
-          <Button onClick={() => setDebouncedSearchInput(searchInput)} className='search-btn'>
+          <Button variant="success" onClick={() => setDebouncedSearchInput(searchInput)} className='search-btn'>
             <FaSearch className='search-icon' /> 
           </Button>
         </InputGroup>

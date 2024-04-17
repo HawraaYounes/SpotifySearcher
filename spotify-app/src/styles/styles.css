@@ -196,3 +196,13 @@ body {
   box-shadow: none !important;
   border: 1px solid white;
 }
+
+.albums-header {
+  color: gray;
+}
+
+.tracks-date-info {
+  margin-top: 5px; /* Adjust as needed */
+  display: flex;
+  justify-content: space-between;
+}

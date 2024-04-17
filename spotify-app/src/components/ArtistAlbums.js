@@ -3,10 +3,25 @@ import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function ArtistAlbums() {
+  const [artistName, setArtistName] = useState('');
   const [albums, setAlbums] = useState([]);
   const { artistId } = useParams();
 
   useEffect(() => {
+    const fetchArtistInfo = async () => {
+      try {
+        const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('spotify_access_token')}`,
+          },
+        });
+        const data = await response.json();
+        setArtistName(data.name);
+      } catch (error) {
+        console.error('Error fetching artist info:', error);
+      }
+    };
+
     const fetchAlbums = async () => {
       try {
         const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums`, {
@@ -21,12 +36,19 @@ function ArtistAlbums() {
       }
     };
 
+    fetchArtistInfo();
     fetchAlbums();
   }, [artistId]);
 
   return (
     <div className="App">
       <Container fluid>
+        <Row className="mx-2 mb-2 align-items-center">
+          <Col>
+            <h1>{artistName}</h1>
+            <h3 className="albums-header">Albums</h3>
+          </Col>
+        </Row>
         <Row className="m-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {albums.map((album) => (
             <Col key={album.id}>
