@@ -43,8 +43,8 @@ function ArtistAlbums() {
                     <p>{album.release_date}</p>
                     <p>{album.total_tracks} tracks</p> 
                   </Card.Body>
-                  <Card.Footer className="text-center">
-                    <a href={album.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                  <Card.Footer className="text-center bg-dark text-white">
+                    <a href={album.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="text-white">
                       Preview on Spotify
                     </a>
                   </Card.Footer>

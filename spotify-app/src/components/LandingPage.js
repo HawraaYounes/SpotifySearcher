@@ -16,11 +16,16 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      <h1>Welcome to My Spotify App</h1>
-      <p>Discover and explore music like never before!</p>
-      <button onClick={handleLogin} className="login-button">
-        Login with Spotify
-      </button>
+      <div className="left-section">
+        <h1>Welcome to Spotify Searcher</h1>
+        <p>Discover and explore music like never before!</p>
+        <button onClick={handleLogin} className="login-button">
+          Login with Spotify
+        </button>
+      </div>
+      <div className="right-section">
+        <img src="/1.jpg" alt="Image" />
+      </div>
     </div>
   );
 }
