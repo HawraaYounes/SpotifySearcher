@@ -21,21 +21,30 @@ function ArtistSearch() {
   }, [searchInput]);
 
   useEffect(() => {
+    // Restore previous search input from local storage
+    const previousSearchInput = localStorage.getItem('previousSearchInput');
+    if (previousSearchInput) {
+      setSearchInput(previousSearchInput);
+      setDebouncedSearchInput(previousSearchInput);
+    }
+  }, []);
+
+  useEffect(() => {
     const search = async () => {
       try {
         const response = await fetch(`https://api.spotify.com/v1/search?q=${debouncedSearchInput}&type=artist`, {
           headers: {
-            Authorization: `Bearer ${accessToken}`, // Use access token in API request
+            Authorization: `Bearer ${accessToken}`,
           },
         });
         const data = await response.json();
-
-        // Filter the search results based on the artist's name
         const filteredResults = data.artists.items.filter((artist) =>
           artist.name.toLowerCase().includes(debouncedSearchInput.toLowerCase())
         );
-
         setSearchResults(filteredResults);
+
+        // Save search input to local storage
+        localStorage.setItem('previousSearchInput', debouncedSearchInput);
       } catch (error) {
         console.error('Error searching for artists:', error);
       }
@@ -44,7 +53,7 @@ function ArtistSearch() {
     if (debouncedSearchInput) {
       search();
     } else {
-      setSearchResults([]); // Clear search results if input is empty
+      setSearchResults([]);
     }
   }, [debouncedSearchInput, accessToken]);
 
@@ -65,7 +74,7 @@ function ArtistSearch() {
   };
 
   const handleCardClick = (artistId) => {
-    navigate(`/albums/${artistId}`); // Navigate to artist albums route using navigate function
+    navigate(`/albums/${artistId}`);
   };
 
   return (
