@@ -83,8 +83,8 @@ function ArtistSearch() {
   return (
     <div className="App">
       {/* Search input field */}
-      <Container className="search-container">
-        <InputGroup className="mb-3" size="lg">
+      <Container className="search-container cc">
+        <InputGroup className="mb-5" size="lg">
           <FormControl
             aria-label="Large"
             className="rounded-start h-auto"
@@ -105,16 +105,20 @@ function ArtistSearch() {
         <Row className="mx-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {searchResults.map((artist) => (
             <Col key={artist.id}>
-              <div className="d-flex h-100">
+              <div className="h-75">
                 {/* Artist card */}
                 <Card className="w-100" onClick={() => handleCardClick(artist.id)}>
                   {/* Artist image */}
-                  <Card.Img src={artist.images[0]?.url || ''} className="card-img-top h-70" alt="Artist" />
+                  <div className="card-img-container ">
+                    <Card.Img src={artist.images[0]?.url || ''} className="card-img " alt="Artist" />
+                  </div>
                   <Card.Body>
+                    <div className="artist-info">
                     {/* Artist name */}
                     <Card.Title>{artist.name}</Card.Title>
                     {/* Follower count */}
                     <div className="follower-count">{artist.followers.total} followers</div>
+                    </div>
                   </Card.Body>
                   {/* Star rating */}
                   <Card.Footer className="border-0 text-muted mb-1">

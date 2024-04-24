@@ -1,23 +1,23 @@
 .star {
-  color: #ccc; 
-  font-size: 24px;
+  color: #ccc;
+  font-size: 30px;
 }
 
 .star.filled {
   color: #28a745;
 }
 ul {
-  list-style: none; 
+  list-style: none;
   padding: 0;
   display: inline-block;
 }
 
 li {
-  display: inline; 
+  display: inline;
 }
 
 li:not(:last-child)::after {
-  content: ", "; 
+  content: ", ";
 }
 .artists-label {
   font-weight: bold;
@@ -26,11 +26,12 @@ li:not(:last-child)::after {
 .album-name {
   color: #28a745;
   font-weight: bold;
+  margin: 0 !important;
 }
 
 body {
   background-color: black;
-  color: white; 
+  color: white;
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -38,29 +39,31 @@ body {
 }
 
 .card {
-  background-color: #343a40; 
+  background-color: #343a40;
   color: white;
+  border-radius: 0;
+  padding: 0 !important;
+  height: 500px;
 }
 
 .star.filled {
-  color: #28a745; 
+  color: #28a745;
 }
 
 .form-control {
   color: black;
 }
 
-
 .card:hover {
-  box-shadow: 0 0 10px rgba(40, 167, 69, 0.6); 
-  transform: scale(1.08); 
-  transition: box-shadow 0.5s, transform 0.5s; 
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.6);
+  transform: scale(1.08);
+  transition: box-shadow 0.5s, transform 0.5s;
 }
 .search-container {
-  padding: 20px; 
+  padding: 20px;
 }
 .search-container input {
-  background-color: #242424; 
+  background-color: #242424;
   color: white;
 }
 .search-container input::placeholder {
@@ -85,7 +88,7 @@ body {
 }
 
 .left-section {
-  text-align: center; 
+  text-align: center;
 }
 
 .left-section h1 {
@@ -104,7 +107,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: inline-block; 
+  display: inline-block;
 }
 
 .login-button:hover {
@@ -123,7 +126,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(29, 185, 84, 0.7); 
+  background-color: rgba(29, 185, 84, 0.7);
   z-index: 1; /* Ensure the overlay is above the image */
 }
 
@@ -153,12 +156,12 @@ body {
 
 .search-btn {
   background-color: #242424;
-  border: 1px solid white; 
+  border: 1px solid white;
   padding: 0;
 }
 
 .search-icon {
-  color: white; 
+  color: white;
 }
 
 .search-btn:hover {
@@ -171,8 +174,45 @@ body {
   color: gray;
 }
 
-.tracks-date-info {
-  margin-top: 5px; 
+.cc {
+  width: 53%;
+}
+
+.card-img-container {
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.card-img {
+  border-radius: 0;
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and cover entire container */
+}
+.artist-info {
+ 
+
+  display: flex !important;
+  flex-direction: column;
+  justify-content: start !important;
+}
+
+.card-body {
+  /* background-color: blue; */
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  padding-top: 7px;
+}
+.card-top {
+  /* background-color: green; */ 
+  margin: 0 !important;
+}
+.album-info {
+  /* background-color: red; */
+  margin: 0 !important;
+}
+.album-info p {
+  margin: 0 ;
 }
