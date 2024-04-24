@@ -1,23 +1,23 @@
 .star {
-  color: #ccc; /* Default star color */
+  color: #ccc; 
   font-size: 24px;
 }
 
 .star.filled {
-  color: #28a745; /* Filled star color */
+  color: #28a745;
 }
 ul {
-  list-style: none; /* Remove bullets */
-  padding: 0; /* Remove default padding */
+  list-style: none; 
+  padding: 0;
   display: inline-block;
 }
 
 li {
-  display: inline; /* Display list items horizontally */
+  display: inline; 
 }
 
 li:not(:last-child)::after {
-  content: ", "; /* Add comma after each list item except the last one */
+  content: ", "; 
 }
 .artists-label {
   font-weight: bold;
@@ -27,11 +27,10 @@ li:not(:last-child)::after {
   color: #28a745;
   font-weight: bold;
 }
-/* App.css */
 
 body {
   background-color: black;
-  color: white; /* Text color */
+  color: white; 
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -39,64 +38,33 @@ body {
 }
 
 .card {
-  background-color: #343a40; /* Dark green background for cards */
+  background-color: #343a40; 
   color: white;
 }
 
 .star.filled {
-  color: #28a745; /* Green color for filled stars */
+  color: #28a745; 
 }
 
 .form-control {
   color: black;
 }
 
-/* .landing-page {
-    background-image: url('/public/1.jpg');
-    background-size: cover;
-    background-position: top center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .login-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #1db954;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-button:hover {
-    background-color: #1ed760;
-  }
-   */
 
 .card:hover {
-  box-shadow: 0 0 10px rgba(40, 167, 69, 0.6); /* Green shadow on hover */
-  transform: scale(1.08); /* Increase scale on hover */
-  transition: box-shadow 0.5s, transform 0.5s; /* Longer transition duration */
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.6); 
+  transform: scale(1.08); 
+  transition: box-shadow 0.5s, transform 0.5s; 
 }
 .search-container {
-  padding: 20px; /* Add padding around the search input */
+  padding: 20px; 
 }
 .search-container input {
-  background-color: #242424; /* Set the background color of the input to gray */
+  background-color: #242424; 
   color: white;
 }
 .search-container input::placeholder {
-  color: white; /* Set the color of the placeholder text to light gray */
+  color: white;
 }
 
 .form-control:focus {
@@ -117,7 +85,7 @@ body {
 }
 
 .left-section {
-  text-align: center; /* Center align text */
+  text-align: center; 
 }
 
 .left-section h1 {
@@ -136,7 +104,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: inline-block; /* Ensure button is inline with text */
+  display: inline-block; 
 }
 
 .login-button:hover {
@@ -155,7 +123,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(29, 185, 84, 0.7); /* Green color with transparency */
+  background-color: rgba(29, 185, 84, 0.7); 
   z-index: 1; /* Ensure the overlay is above the image */
 }
 
@@ -185,12 +153,12 @@ body {
 
 .search-btn {
   background-color: #242424;
-  border: 1px solid white; /* Add a white border */
+  border: 1px solid white; 
   padding: 0;
 }
 
 .search-icon {
-  color: white; /* Change the color to green */
+  color: white; 
 }
 
 .search-btn:hover {
@@ -204,7 +172,7 @@ body {
 }
 
 .tracks-date-info {
-  margin-top: 5px; /* Adjust as needed */
+  margin-top: 5px; 
   display: flex;
   justify-content: space-between;
 }

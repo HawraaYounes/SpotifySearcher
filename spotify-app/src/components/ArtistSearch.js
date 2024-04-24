@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa'; // Import the search icon from react-icons/fa
 
 function ArtistSearch() {
-  const [searchInput, setSearchInput] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [debouncedSearchInput, setDebouncedSearchInput] = useState('');
-  const accessToken = localStorage.getItem('spotify_access_token');
-  const navigate = useNavigate();
+  const [searchInput, setSearchInput] = useState(''); // State to hold the search input value
+  const [searchResults, setSearchResults] = useState([]); // State to hold the search results
+  const [debouncedSearchInput, setDebouncedSearchInput] = useState(''); // State to hold the debounced search input value
+  const accessToken = localStorage.getItem('spotify_access_token'); // Get the access token from local storage
+  const navigate = useNavigate(); // Hook to navigate to different routes
 
+  // Debounce the search input to reduce API requests
   useEffect(() => {
     const timerId = setTimeout(() => {
       setDebouncedSearchInput(searchInput);
@@ -20,8 +21,8 @@ function ArtistSearch() {
     };
   }, [searchInput]);
 
+  // Restore previous search input from local storage when component mounts
   useEffect(() => {
-    // Restore previous search input from local storage
     const previousSearchInput = localStorage.getItem('previousSearchInput');
     if (previousSearchInput) {
       setSearchInput(previousSearchInput);
@@ -29,6 +30,7 @@ function ArtistSearch() {
     }
   }, []);
 
+  // Fetch artist data from Spotify API based on the search input
   useEffect(() => {
     const search = async () => {
       try {
@@ -73,12 +75,14 @@ function ArtistSearch() {
     return stars;
   };
 
+  // Function to handle click on artist card and navigate to artist albums
   const handleCardClick = (artistId) => {
     navigate(`/albums/${artistId}`);
   };
 
   return (
     <div className="App">
+      {/* Search input field */}
       <Container className="search-container">
         <InputGroup className="mb-3" size="lg">
           <FormControl
@@ -89,23 +93,30 @@ function ArtistSearch() {
             value={searchInput}
             onChange={(event) => setSearchInput(event.target.value)}
           />
+          {/* Search button */}
           <Button variant="success" onClick={() => setDebouncedSearchInput(searchInput)} className='search-btn'>
             <FaSearch className='search-icon' /> 
           </Button>
         </InputGroup>
       </Container>
 
+      {/* Display search results */}
       <Container fluid>
         <Row className="mx-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
           {searchResults.map((artist) => (
             <Col key={artist.id}>
               <div className="d-flex h-100">
+                {/* Artist card */}
                 <Card className="w-100" onClick={() => handleCardClick(artist.id)}>
+                  {/* Artist image */}
                   <Card.Img src={artist.images[0]?.url || ''} className="card-img-top h-70" alt="Artist" />
                   <Card.Body>
+                    {/* Artist name */}
                     <Card.Title>{artist.name}</Card.Title>
+                    {/* Follower count */}
                     <div className="follower-count">{artist.followers.total} followers</div>
                   </Card.Body>
+                  {/* Star rating */}
                   <Card.Footer className="border-0 text-muted mb-1">
                     <div className="star-rating">{renderStarRating(artist.popularity)}</div>
                   </Card.Footer>
