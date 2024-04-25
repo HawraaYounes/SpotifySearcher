@@ -83,11 +83,11 @@ function ArtistSearch() {
   return (
     <div className="App">
       {/* Search input field */}
-      <Container className="search-container cc">
+      <Container className="search-container ">
         <InputGroup className="mb-5" size="lg">
           <FormControl
             aria-label="Large"
-            className="rounded-start h-auto"
+            className="rounded-start h-auto placeholder-centered"
             placeholder="Search for an artist..."
             type="input"
             value={searchInput}
