@@ -17,6 +17,7 @@ const CallbackPage = () => {
 
     if (accessToken) {
       localStorage.setItem("spotify_access_token", accessToken);
+      localStorage.removeItem('previousSearchInput');
       navigate("/search"); // Redirect to Artist Search page upon successful authentication
     }
   }, [navigate]);

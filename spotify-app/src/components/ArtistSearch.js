@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Container, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  InputGroup,
+  FormControl,
+  Button,
+  Row,
+  Col,
+  Card,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from 'react-icons/fa'; // Import the search icon from react-icons/fa
+import { FaSearch } from "react-icons/fa"; // Import the search icon from react-icons/fa
 
 function ArtistSearch() {
-  const [searchInput, setSearchInput] = useState(''); // State to hold the search input value
+  const [searchInput, setSearchInput] = useState(""); // State to hold the search input value
   const [searchResults, setSearchResults] = useState([]); // State to hold the search results
-  const [debouncedSearchInput, setDebouncedSearchInput] = useState(''); // State to hold the debounced search input value
-  const accessToken = localStorage.getItem('spotify_access_token'); // Get the access token from local storage
+  const [debouncedSearchInput, setDebouncedSearchInput] = useState(""); // State to hold the debounced search input value
+  const accessToken = localStorage.getItem("spotify_access_token"); // Get the access token from local storage
   const navigate = useNavigate(); // Hook to navigate to different routes
 
   // Debounce the search input to reduce API requests
@@ -23,7 +31,7 @@ function ArtistSearch() {
 
   // Restore previous search input from local storage when component mounts
   useEffect(() => {
-    const previousSearchInput = localStorage.getItem('previousSearchInput');
+    const previousSearchInput = localStorage.getItem("previousSearchInput");
     if (previousSearchInput) {
       setSearchInput(previousSearchInput);
       setDebouncedSearchInput(previousSearchInput);
@@ -34,11 +42,14 @@ function ArtistSearch() {
   useEffect(() => {
     const search = async () => {
       try {
-        const response = await fetch(`https://api.spotify.com/v1/search?q=${debouncedSearchInput}&type=artist`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
+        const response = await fetch(
+          `https://api.spotify.com/v1/search?q=${debouncedSearchInput}&type=artist`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
         const data = await response.json();
         const filteredResults = data.artists.items.filter((artist) =>
           artist.name.toLowerCase().includes(debouncedSearchInput.toLowerCase())
@@ -46,9 +57,9 @@ function ArtistSearch() {
         setSearchResults(filteredResults);
 
         // Save search input to local storage
-        localStorage.setItem('previousSearchInput', debouncedSearchInput);
+        localStorage.setItem("previousSearchInput", debouncedSearchInput);
       } catch (error) {
-        console.error('Error searching for artists:', error);
+        console.error("Error searching for artists:", error);
       }
     };
 
@@ -66,9 +77,17 @@ function ArtistSearch() {
 
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
-        stars.push(<span key={i} className="star filled">&#9733;</span>); // Render a filled star with class "filled"
+        stars.push(
+          <span key={i} className="star filled">
+            &#9733;
+          </span>
+        ); // Render a filled star with class "filled"
       } else {
-        stars.push(<span key={i} className="star">&#9734;</span>); // Render an empty star
+        stars.push(
+          <span key={i} className="star">
+            &#9734;
+          </span>
+        ); // Render an empty star
       }
     }
 
@@ -94,12 +113,16 @@ function ArtistSearch() {
             onChange={(event) => setSearchInput(event.target.value)}
           />
           {/* Search button */}
-          <Button variant="success" onClick={() => setDebouncedSearchInput(searchInput)} className='search-btn'>
-            <FaSearch className='search-icon' /> 
+          <Button
+            variant="success"
+            onClick={() => setDebouncedSearchInput(searchInput)}
+            className="search-btn"
+          >
+            <FaSearch className="search-icon" />
           </Button>
         </InputGroup>
       </Container>
-
+     
       {/* Display search results */}
       <Container fluid>
         <Row className="mx-2 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
@@ -107,22 +130,33 @@ function ArtistSearch() {
             <Col key={artist.id}>
               <div className="h-75">
                 {/* Artist card */}
-                <Card className="w-100" onClick={() => handleCardClick(artist.id)}>
+                <Card
+                  className="w-100"
+                  onClick={() => handleCardClick(artist.id)}
+                >
                   {/* Artist image */}
                   <div className="card-img-container ">
-                    <Card.Img src={artist.images[0]?.url || ''} className="card-img " alt="Artist" />
+                    <Card.Img
+                      src={artist.images[0]?.url || ""}
+                      className="card-img "
+                      alt="Artist"
+                    />
                   </div>
                   <Card.Body>
                     <div className="artist-info">
-                    {/* Artist name */}
-                    <Card.Title>{artist.name}</Card.Title>
-                    {/* Follower count */}
-                    <div className="follower-count">{artist.followers.total} followers</div>
+                      {/* Artist name */}
+                      <Card.Title>{artist.name}</Card.Title>
+                      {/* Follower count */}
+                      <div className="follower-count">
+                        {artist.followers.total} followers
+                      </div>
                     </div>
                   </Card.Body>
                   {/* Star rating */}
                   <Card.Footer className="border-0 text-muted mb-1">
-                    <div className="star-rating">{renderStarRating(artist.popularity)}</div>
+                    <div className="star-rating">
+                      {renderStarRating(artist.popularity)}
+                    </div>
                   </Card.Footer>
                 </Card>
               </div>
